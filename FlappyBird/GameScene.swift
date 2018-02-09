@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
     
     var scrollNode:SKNode!
     var wallNode:SKNode!
@@ -28,6 +28,7 @@ class GameScene: SKScene {
         
         // 重力を設定
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.0)    // ←追加
+        physicsWorld.contactDelegate = self // ←追加
         
         // 背景色を設定
         backgroundColor = UIColor(colorLiteralRed: 0.15, green: 0.75, blue: 0.90, alpha: 1)
@@ -77,7 +78,7 @@ class GameScene: SKScene {
             sprite.run(repeatScrollGround)
             
             // スプライトに物理演算を設定する
-            sprite.physicsBody = SKPhysicsBody(rectangleOf: groundTexture.size())   // ←追加
+            sprite.physicsBody = SKPhysicsBody(rectangleOf: groundTexture.size())
             
             // 衝突のカテゴリー設定
             sprite.physicsBody?.categoryBitMask = groundCategory    // ←追加
@@ -168,22 +169,22 @@ class GameScene: SKScene {
             wall.addChild(under)
             
             // スプライトに物理演算を設定する
-            under.physicsBody = SKPhysicsBody(rectangleOf: wallTexture.size())    // ←追加
+            under.physicsBody = SKPhysicsBody(rectangleOf: wallTexture.size())
             under.physicsBody?.categoryBitMask = self.wallCategory    // ←追加
             
             // 衝突の時に動かないように設定する
-            under.physicsBody?.isDynamic = false    // ←追加
+            under.physicsBody?.isDynamic = false
             
             // 上側の壁を作成
             let upper = SKSpriteNode(texture: wallTexture)
             upper.position = CGPoint(x: 0.0, y: under_wall_y + wallTexture.size().height + slit_length)
             
             // スプライトに物理演算を設定する
-            upper.physicsBody = SKPhysicsBody(rectangleOf: wallTexture.size())    // ←追加
-            under.physicsBody?.categoryBitMask = self.wallCategory    // ←追加
+            upper.physicsBody = SKPhysicsBody(rectangleOf: wallTexture.size())
+            upper.physicsBody?.categoryBitMask = self.wallCategory    // ←追加
             
             // 衝突の時に動かないように設定する
-            upper.physicsBody?.isDynamic = false    // ←追加
+            upper.physicsBody?.isDynamic = false
             
             wall.addChild(upper)
             
@@ -197,7 +198,7 @@ class GameScene: SKScene {
             
             wall.addChild(scoreNode)
             // --- ここまで追加 ---
-
+            
             wall.run(wallAnimation)
             
             self.wallNode.addChild(wall)
@@ -228,7 +229,7 @@ class GameScene: SKScene {
         bird.position = CGPoint(x: self.frame.size.width * 0.2, y:self.frame.size.height * 0.7)
         
         // 物理演算を設定
-        bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2.0)    // ←追加
+        bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2.0)
         
         // 衝突した時に回転させない
         bird.physicsBody?.allowsRotation = false    // ←追加
