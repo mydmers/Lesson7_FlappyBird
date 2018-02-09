@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         skView.showsNodeCount = true
         
         // ビューと同じサイズでシーンを作成する
-        let scene = SKScene(size:skView.frame.size)
+        let scene = GameScene(size:skView.frame.size) //GameSceneクラスに変更する
         
         // ビューにシーンを表示する
         skView.presentScene(scene)
@@ -35,7 +35,11 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    // ステータスバーを消す --- ここから ---
+    override var prefersStatusBarHidden: Bool {
+        get {
+            return true
+        }
+    } // --- ここまで追加 ---
 }
 

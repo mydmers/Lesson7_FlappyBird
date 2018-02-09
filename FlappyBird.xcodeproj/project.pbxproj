@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A80D169202A1E4800EB7E96 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80D168202A1E4800EB7E96 /* GameScene.swift */; };
 		0AB4DAB620262DCB00CA260D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4DAB520262DCB00CA260D /* AppDelegate.swift */; };
 		0AB4DAB820262DCB00CA260D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4DAB720262DCB00CA260D /* ViewController.swift */; };
 		0AB4DABB20262DCB00CA260D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AB4DAB920262DCB00CA260D /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A80D168202A1E4800EB7E96 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		0AB4DAB220262DCB00CA260D /* FlappyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB4DAB520262DCB00CA260D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AB4DAB720262DCB00CA260D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				0AB4DAB520262DCB00CA260D /* AppDelegate.swift */,
 				0AB4DAB720262DCB00CA260D /* ViewController.swift */,
+				0A80D168202A1E4800EB7E96 /* GameScene.swift */,
 				0AB4DAB920262DCB00CA260D /* Main.storyboard */,
 				0AB4DABC20262DCB00CA260D /* Assets.xcassets */,
 				0AB4DABE20262DCB00CA260D /* LaunchScreen.storyboard */,
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A80D169202A1E4800EB7E96 /* GameScene.swift in Sources */,
 				0AB4DAB820262DCB00CA260D /* ViewController.swift in Sources */,
 				0AB4DAB620262DCB00CA260D /* AppDelegate.swift in Sources */,
 			);
@@ -311,6 +315,7 @@
 				0AB4DAC620262DCB00CA260D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
