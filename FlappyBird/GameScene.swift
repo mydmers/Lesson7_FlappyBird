@@ -78,6 +78,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
         // 2つのアニメーションを順に実行するアクションを作成
         let itemAnimation = SKAction.sequence([moveItem, removeItem])
         
+        let sprite = SKSpriteNode(texture: itemTexture)
+        
         // アイテムを生成するアクションを作成
         let createItemAnimation = SKAction.run({
             // アイテム関連のノードを乗せるノードを作成
@@ -95,7 +97,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
             // スコアアップ用のノード --- ここから ---
             let itemscoreNode = SKSpriteNode()
             itemscoreNode.position = CGPoint(x: -itemmovingDistance, y: y_axis)
-            itemscoreNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(),center:CGPoint())
+            itemscoreNode.physicsBody = SKPhysicsBody(texture: itemTexture, size: itemTexture.size())
             itemscoreNode.physicsBody?.isDynamic = false
             itemscoreNode.physicsBody?.categoryBitMask = self.itemCategory
             itemscoreNode.physicsBody?.contactTestBitMask = self.birdCategory
@@ -104,9 +106,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
             // --- ここまで追加 ---
             
             item.run(itemAnimation)
-            
-//            self.scrollNode.addChild(item)
         })
+        scrollNode.addChild(sprite)
     }
     
     func setupGround() {
