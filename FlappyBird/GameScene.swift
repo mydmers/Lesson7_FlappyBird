@@ -50,6 +50,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
         wallNode = SKNode()
         scrollNode.addChild(wallNode)
         
+        //アイテムのノード
+        itemscrollNode = SKNode()
+        scrollNode.addChild(itemscrollNode)
+
         // 各種スプライトを生成する処理をメソッドに分割
         setupGround()
         setupCloud()
@@ -70,7 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
         
         // 画面外まで移動するアクションを作成
         let y_axis = CGFloat(arc4random_uniform(100)/100) * ( self.frame.size.height)
-        let moveItem = SKAction.moveBy(x: -itemmovingDistance, y: y_axis, duration:4.0)
+        let moveItem = SKAction.moveBy(x: -itemmovingDistance, y: y_axis, duration:2.0)
         
         // 自身を取り除くアクションを作成
         let removeItem = SKAction.removeFromParent()
@@ -78,21 +82,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
         // 2つのアニメーションを順に実行するアクションを作成
         let itemAnimation = SKAction.sequence([moveItem, removeItem])
         
-        let sprite = SKSpriteNode(texture: itemTexture)
-        
         // アイテムを生成するアクションを作成
         let createItemAnimation = SKAction.run({
             // アイテム関連のノードを乗せるノードを作成
-            let item = SKNode()
-            item.position = CGPoint(x: self.frame.size.width + itemTexture.size().width / 2, y: y_axis)
-            self.item.zPosition = -30.0 // 雲＞壁＞アイテム＞地面
-
+            let item = SKSpriteNode(texture: itemTexture)
+            item.position = CGPoint(x: 0.0, y: y_axis)
+            item.zPosition = -50.0 // 雲＞壁＞アイテム＞地面
+            
             // スプライトに物理演算を設定する
             item.physicsBody = SKPhysicsBody(rectangleOf: itemTexture.size())
             item.physicsBody?.categoryBitMask = self.itemCategory    // ←追加
             
             // 衝突の時に動くように設定する
             item.physicsBody?.isDynamic = true
+            
             
             // スコアアップ用のノード --- ここから ---
             let itemscoreNode = SKSpriteNode()
@@ -106,8 +109,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
             // --- ここまで追加 ---
             
             item.run(itemAnimation)
+            self.itemscrollNode.addChild(item)
         })
-        scrollNode.addChild(sprite)
+        itemscrollNode.run(createItemAnimation)
     }
     
     func setupGround() {
@@ -209,7 +213,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
             let wall = SKNode()
             wall.position = CGPoint(x: self.frame.size.width + wallTexture.size().width / 2, y: 0.0)
             wall.zPosition = -50.0 // 雲より手前、地面より奥
-            
             // 画面のY軸の中央値
             let center_y = self.frame.size.height / 2
             // 壁のY座標を上下ランダムにさせるときの最大値
@@ -254,7 +257,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
             // --- ここまで追加 ---
             
             wall.run(wallAnimation)
-            
             self.wallNode.addChild(wall)
         })
         
