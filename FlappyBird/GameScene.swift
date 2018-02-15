@@ -85,17 +85,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
         // アイテムを生成するアクションを作成
         let createItemAnimation = SKAction.run({
             // アイテム関連のノードを乗せるノードを作成
-            let item = SKSpriteNode(texture: itemTexture)
+            let item = SKNode()
             item.position = CGPoint(x: 0.0, y: y_axis)
             item.zPosition = -50.0 // 雲＞壁＞アイテム＞地面
+
+            //アイテム作成
+            let itemP = SKSpriteNode(texture: itemTexture)
+            itemP.position = CGPoint(x: 0.0, y: y_axis)
             
             // スプライトに物理演算を設定する
-            item.physicsBody = SKPhysicsBody(rectangleOf: itemTexture.size())
-            item.physicsBody?.categoryBitMask = self.itemCategory    // ←追加
+            itemP.physicsBody = SKPhysicsBody(rectangleOf: itemTexture.size())
+            itemP.physicsBody?.categoryBitMask = self.itemCategory    // ←追加
             
             // 衝突の時に動くように設定する
-            item.physicsBody?.isDynamic = true
-            
+            itemP.physicsBody?.isDynamic = true
+            item.addChild(itemP)
             
             // スコアアップ用のノード --- ここから ---
             let itemscoreNode = SKSpriteNode()
@@ -111,7 +115,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
             item.run(itemAnimation)
             self.itemscrollNode.addChild(item)
         })
-        itemscrollNode.run(createItemAnimation)
+
+        // 次のアイテム作成までの待ち時間のアクションを作成
+        let itemwaitAnimation = SKAction.wait(forDuration: 1)
+        
+        // アイテムを作成->待ち時間->アイテムを作成を無限に繰り替えるアクションを作成
+        let itemrepeatForeverAnimation = SKAction.repeatForever(SKAction.sequence([createItemAnimation, itemwaitAnimation]))
+
+        itemscrollNode.run(itemrepeatForeverAnimation)
     }
     
     func setupGround() {
@@ -242,7 +253,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
             
             // 衝突の時に動かないように設定する
             upper.physicsBody?.isDynamic = false
-            
             wall.addChild(upper)
             
             // スコアアップ用のノード --- ここから ---
