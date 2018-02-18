@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A009D8C2039BF92000764C8 /* decision-13.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0A009D8B2039BF92000764C8 /* decision-13.mp3 */; };
 		0A80D169202A1E4800EB7E96 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80D168202A1E4800EB7E96 /* GameScene.swift */; };
 		0AB4DAB620262DCB00CA260D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4DAB520262DCB00CA260D /* AppDelegate.swift */; };
 		0AB4DAB820262DCB00CA260D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4DAB720262DCB00CA260D /* ViewController.swift */; };
@@ -15,10 +14,10 @@
 		0AB4DABD20262DCB00CA260D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB4DABC20262DCB00CA260D /* Assets.xcassets */; };
 		0AB4DAC020262DCB00CA260D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AB4DABE20262DCB00CA260D /* LaunchScreen.storyboard */; };
 		0AB4DAC920262E5800CA260D /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AB4DAC820262E5800CA260D /* SpriteKit.framework */; };
+		0AE95A912039CF5900209F29 /* decision-13.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0AE95A902039CF5900209F29 /* decision-13.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0A009D8B2039BF92000764C8 /* decision-13.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "decision-13.mp3"; path = "../../../Desktop/decision-13.mp3"; sourceTree = "<group>"; };
 		0A80D168202A1E4800EB7E96 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		0AB4DAB220262DCB00CA260D /* FlappyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB4DAB520262DCB00CA260D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +27,7 @@
 		0AB4DABF20262DCB00CA260D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AB4DAC120262DCB00CA260D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AB4DAC820262E5800CA260D /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		0AE95A902039CF5900209F29 /* decision-13.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "decision-13.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 		0AB4DAB420262DCB00CA260D /* FlappyBird */ = {
 			isa = PBXGroup;
 			children = (
-				0A009D8B2039BF92000764C8 /* decision-13.mp3 */,
+				0AE95A902039CF5900209F29 /* decision-13.mp3 */,
 				0AB4DAB520262DCB00CA260D /* AppDelegate.swift */,
 				0AB4DAB720262DCB00CA260D /* ViewController.swift */,
 				0A80D168202A1E4800EB7E96 /* GameScene.swift */,
@@ -141,10 +141,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A009D8C2039BF92000764C8 /* decision-13.mp3 in Resources */,
 				0AB4DAC020262DCB00CA260D /* LaunchScreen.storyboard in Resources */,
 				0AB4DABD20262DCB00CA260D /* Assets.xcassets in Resources */,
 				0AB4DABB20262DCB00CA260D /* Main.storyboard in Resources */,
+				0AE95A912039CF5900209F29 /* decision-13.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
