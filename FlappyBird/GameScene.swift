@@ -33,6 +33,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
     let userDefaults:UserDefaults = UserDefaults.standard    // 追加
     var scoreItem:SKLabelNode!
     
+    //オーディオノード
+    let audioNode = SKAudioNode(fileNamed: "decision-13.mp3")
+    
     // SKView上にシーンが表示されたときに呼ばれるメソッド
     override func didMove(to view: SKView) {
         
@@ -62,12 +65,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
         setupBird()
         setupItem()
         setupScoreLabel()   // 追加
-        
+//----------------------
         //サウンドのノード
-        let music = SKAudioNode(fileNamed: "decision-13.mp3")
-        music.autoplayLooped = false
-        soundNode = music
-        self.addChild(soundNode)
+        audioNode.autoplayLooped = false
+        self.addChild(audioNode)
+//----------------------
     }
 
     func setupItem() {
@@ -319,10 +321,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
         }
         
 //----------------------
-        soundNode.removeFromParent()
-        itemscrollNode.removeFromParent()
-        print("999")
-        setupItem()
+        let stopAction = SKAction.stop()
+        audioNode.run(stopAction)
 //----------------------
         
         if scrollNode.speed > 0 {
@@ -366,8 +366,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
             scoreNumber += 1
             scoreItem.text = "アイテム数:\(scoreNumber)"    // ←追加
 //----------------------
-            soundNode.run(SKAction.play())
-            itemscrollNode.removeFromParent()
+            let playAction = SKAction.play()
+            audioNode.run(playAction)
+            contact.bodyA.node?.removeFromParent()
 //----------------------
         } else {
             // 壁か地面と衝突した
