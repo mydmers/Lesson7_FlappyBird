@@ -368,7 +368,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
 //----------------------
             let playAction = SKAction.play()
             audioNode.run(playAction)
-            contact.bodyA.node?.removeFromParent()
+            if (contact.bodyA.categoryBitMask & itemCategory) == itemCategory {
+                contact.bodyA.node?.removeFromParent()}
+            if (contact.bodyB.categoryBitMask & itemCategory) == itemCategory {
+                contact.bodyB.node?.removeFromParent()}
 //----------------------
         } else {
             // 壁か地面と衝突した
@@ -403,6 +406,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */ {
     
     func setupScoreLabel() {
         score = 0
+        scoreNumber = 0
         scoreLabelNode = SKLabelNode()
         scoreLabelNode.fontColor = UIColor.black
         scoreLabelNode.position = CGPoint(x: 10, y: self.frame.size.height - 30)
